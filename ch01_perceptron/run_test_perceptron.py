@@ -83,7 +83,7 @@ def train_and_test_perceptron():
     Test perceptron output vs "true" function.
     """
     # Random points
-    training_sample, true_values, fm, fb = throw_random_points(10)
+    training_sample, true_values, fm, fb = throw_random_points(100)
 
     # Train perceptron
     gm, gb, number_iterations, g_w = perceptron(training_sample, true_values)
@@ -94,7 +94,7 @@ def train_and_test_perceptron():
 
 
 if __name__ == "__main__":
-    number_tests = 10
+    number_tests = 100
     error_avg = 0
     iterations_avg = 0
     for i in range(number_tests):
