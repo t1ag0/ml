@@ -1,1 +1,6 @@
-__author__ = 'tiago'
+import matplotlib.pyplot as plt
+
+from matplotlib import pyplot as plt
+
+
+

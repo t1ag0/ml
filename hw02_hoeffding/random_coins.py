@@ -79,6 +79,7 @@ def toss_coins(n_rep, n_flips, n_coins):
 
     mu_mins = np.min(matix_rep_coins, axis=1)
     mu_min = np.mean(mu_mins)
+    mu_min_min = np.min(mu_mins)
     #print mu_mins.shape
     tMean_coins = time.clock()
     #
@@ -99,16 +100,16 @@ def toss_coins(n_rep, n_flips, n_coins):
     print ' Time Mean2    :', tMean_coins - tMean
     print ' Time For Loop :', t_forLoop - tMean_coins
 
-    return mu_1, mu_rnd, mu_min
+    return mu_1, mu_rnd, mu_min, mu_min_min
 
 
 if __name__ == "__main__":
     t0 = time.clock()
     n_rep = 100000
-    _nu_1, _nu_rnd, _nu_min = toss_coins(n_rep=n_rep, n_flips=10, n_coins=1000)
+    _nu_1, _nu_rnd, _nu_min, _nu_min_min = toss_coins(n_rep=n_rep, n_flips=10, n_coins=1000)
     t1 = time.clock() - t0
     print '\n Total time for', n_rep, 'experiments : ', t1
     print ' Results: '
     print ' Freq heads 1st coin    :', _nu_1
     print ' Freq heads Random coin :', _nu_rnd
-    print ' Min Freq of head       :', _nu_min
+    print ' Min Freq of head       :', _nu_min, _nu_min_min

@@ -2,7 +2,7 @@ import numpy as np
 __author__ = 'tiago'
 
 
-def perceptron(x, y, learning_rate=1):
+def perceptron(x, y, initial_weights=None, learning_rate=1):
     """
     Variation of basic perceptron. This version only changes ONCE per iteration.
     it takes RANDOMLY only one of the points with errors, actualizes W, and B and back again.
@@ -12,8 +12,13 @@ def perceptron(x, y, learning_rate=1):
     """
     #
     npoints, ncols = x.shape
-    w = np.zeros(ncols, dtype=int)    # Initialize the parameter
-    b = 0
+    if initial_weights:
+        w = np.array(initial_weights[:ncols])
+        b = initial_weights[-1]
+    else:
+        w = np.zeros(ncols, dtype=int)    # Initialize the weights to 0
+        b = 0
+    #
     R = 2   # math.sqrt(20)
     #
     iterations = 0  # iterations
@@ -33,6 +38,7 @@ def perceptron(x, y, learning_rate=1):
             idx = np.random.randint(len(mistakes))
             w = w + mistakes[idx][0]
             b = b + mistakes[idx][1]
-    _gm = -w[0] / w[1]
-    _gb = -b / w[1]
-    return _gm, _gb, iterations, [b, w[0], w[1]]
+    # _gm = -w[0] / w[1]
+    # _gb = -b / w[1]
+    _g = [w[0], w[1], b]
+    return _g, iterations
